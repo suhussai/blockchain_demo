@@ -43,7 +43,7 @@ class Blockchain(object):
     def validate_proof(last_proof, proof):
         guess = (str(last_proof) + str(proof)).encode()
         guess_hash = hashlib.sha256(guess).hexdigest()
-        return guess_hash[:4] == "0000"
+        return guess_hash[:1] == "0"
 
     @staticmethod
     def hash(block):
