@@ -32,7 +32,12 @@ class Blockchain(object):
         return self.last_block['index'] + 1
 
     def proof_of_work(self, last_proof):
-        pass
+        proof = 0
+
+        while self.validate_proof(last_proof, proof) is False:
+            proof += 1
+
+        return proof
 
     @staticmethod
     def validate_proof(last_proof, proof):
@@ -48,4 +53,3 @@ class Blockchain(object):
     @property
     def last_block(self):
         return self.chain[-1]
-        pass
